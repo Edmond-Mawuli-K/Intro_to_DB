@@ -33,13 +33,13 @@ CREATE TABLE Customers (
 );
 
 -- ORDERS TABLE
-CREATE TABLE Orders (
+CREATE TABLE Orders(
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
     order_date DATE NOT NULL,
     CONSTRAINT fk_orders_customer
         FOREIGN KEY (customer_id)
-        REFERENCES CUSTOMERS(customer_id)
+        REFERENCES Customers(customer_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
@@ -52,12 +52,12 @@ CREATE TABLE Order_Details (
     quantity DOUBLE NOT NULL,
     CONSTRAINT fk_orderdetails_order
         FOREIGN KEY (order_id)
-        REFERENCES ORDERS(order_id)
+        REFERENCES Orders(order_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     CONSTRAINT fk_orderdetails_book
         FOREIGN KEY (book_id)
-        REFERENCES BOOKS(book_id)
+        REFERENCES Books(book_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
